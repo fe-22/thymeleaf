@@ -2,43 +2,82 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Faça o seu cadastro</title>
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="widht=device-widht, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Faça o seu cadastro</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: sans-serif;
+    }
+
+    form {
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="date"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box; /* Include padding in width calculation */
+    }
+
+    input[type="text"]:focus, input[type="date"]:focus, input[type="password"]:focus {
+      border-color: #999;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #449d44;
+    }
+  </style>
 </head>
 
 <body>
-	<center>
-		<h1>Faça seu cadastro</h1>
+  <center>
+    <h1>Faça seu cadastro</h1>
 
-		<form th:action="@{/users}" th:object="${user}" method="post">
-			<div>
-				<pre>
-                <label th:for="name">Nome:</label>
-                <input type="text" th:field="*{name}" placeholder="Seu Nome" required="required">
-               
-            </div>
-             <div>
-				<pre>
-                <label th:for="birthDate">Data de nascimento:</label>
-                <input type="date" th:field="*{birthDate}" required="required">
-               </pre>
-            </div>
-            
-             <div>
-				
-                <label th:for="password">Senha:</label>
-                <input type="password" th:field="*{password}" placeholder="******" minlength="6" required="required">
-                </pre>
-			</div>
-			<div>
-				<button type="submit">Enviar</button>
-			</div>
-	</center>
-	</form>
+    <form th:action="@{/users}" th:object="${user}" method="post">
+      <div>
+        <label th:for="name">Nome:</label>
+        <input type="text" th:field="*{name}" placeholder="Seu Nome" required="required">
+      </div>
 
+      <div>
+        <label th:for="birthDate">Data de nascimento:</label>
+        <input type="date" th:field="*{birthDate}" required="required">
+      </div>
+
+      <div>
+        <label th:for="password">Senha:</label>
+        <input type="password" th:field="*{password}" placeholder="******" minlength="6" required="required">
+      </div>
+
+      <div>
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </center>
 </body>
 
 </html>
